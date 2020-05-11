@@ -237,8 +237,6 @@ uint8_t SX127xDriver::SetFrequency(uint32_t freq)
   uint8_t buff[3] = {(uint8_t)((FRQ >> 16) & 0xFF), (uint8_t)((FRQ >> 8) & 0xFF), (uint8_t)(FRQ & 0xFF)}; //check speedup
   writeRegisterBurst((uint8_t)SX127X_REG_FRF_MSB, buff, 3);
 
-  status = SetMode(OPMODE_STANDBY);
-
   if (status != ERR_NONE)
   {
     return (status);
@@ -437,6 +435,9 @@ uint8_t ICACHE_RAM_ATTR SX127xDriver::TXnb(const volatile uint8_t *data, uint8_t
 #ifdef SX127x_DEBUG_TIMINGS
   SX127xDriver::TXstartMicros = micros();
 #endif
+
+  ClearIRQFlags();
+  SetMode(OPMODE_STANDBY);
 
   SetMode(OPMODE_STANDBY); // will be skipped if already in standby
 

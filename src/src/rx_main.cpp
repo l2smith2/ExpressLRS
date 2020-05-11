@@ -115,6 +115,7 @@ void ICACHE_RAM_ATTR HandleFHSS()
     {
         Radio.SetFrequency(FHSSgetNextFreq());
         Radio.RXnb();
+        Serial.println(linkQuality);
         //crsf.sendLinkStatisticsToFC();
     }
 }
@@ -289,7 +290,7 @@ void ICACHE_RAM_ATTR ProcessRFPacket()
         #else
         UnpackChannelData_11bit();
         #endif
-        crsf.sendRCFrameToFC();
+        //crsf.sendRCFrameToFC();
         break;
 
     case SWITCH_DATA_PACKET:                                                                                      // Switch Data Packet
@@ -298,7 +299,7 @@ void ICACHE_RAM_ATTR ProcessRFPacket()
             UnpackSwitchData();
             NonceRXlocal = Radio.RXdataBuffer[5];
             FHSSsetCurrIndex(Radio.RXdataBuffer[6]);
-            crsf.sendRCFrameToFC();
+            //crsf.sendRCFrameToFC();
         }
         break;
 
@@ -532,7 +533,7 @@ void loop()
 
     if ((millis() > (SendLinkStatstoFCintervalLastSent + SEND_LINK_STATS_TO_FC_INTERVAL)) && connectionState != disconnected)
     {
-        crsf.sendLinkStatisticsToFC();
+        //crsf.sendLinkStatisticsToFC();
         SendLinkStatstoFCintervalLastSent = millis();
     }
 

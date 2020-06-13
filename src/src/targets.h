@@ -134,13 +134,13 @@ https://github.com/jaxxzer
 #define GPIO_PIN_RFswitch_CONTROL     PB3  //HIGH = RX, LOW = TX
 
 #define GPIO_PIN_NSS            PB12
-#define GPIO_PIN_DIO0           PA15
+#define GPIO_PIN_DIO0           PC15 //PA15
 #define GPIO_PIN_MOSI           PB15
 #define GPIO_PIN_MISO           PB14
 #define GPIO_PIN_SCK            PB13
 #define GPIO_PIN_RST            PC14
-#define GPIO_PIN_RX_ENABLE      GPIO_PIN_RFswitch_CONTROL
-#define GPIO_PIN_TX_ENABLE      GPIO_PIN_RFamp_APC1
+#define GPIO_PIN_RX_ENABLE      -1//GPIO_PIN_RFswitch_CONTROL
+#define GPIO_PIN_TX_ENABLE      -1//GPIO_PIN_RFamp_APC1
 #define GPIO_PIN_SDA            PB7
 #define GPIO_PIN_SCL            PB6
 #define GPIO_PIN_RCSIGNAL_RX    PB11 // not yet confirmed

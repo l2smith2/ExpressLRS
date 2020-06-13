@@ -606,7 +606,8 @@ void setup()
 
   SetRFLinkRate(RATE_200HZ);
   crsf.Begin();
-  //hwTimer.init(); //enable this for debug
+  // hwTimer.init(); //enable this for debug
+  Radio.SetOutputPower(0b1111);
 }
 
 void loop()
